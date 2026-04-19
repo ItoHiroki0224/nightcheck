@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-canvas: #f2f2f2;
+  --color-ink: #111111;
+  --color-accent: #ff3b30; /* Swiss Red */
+  --color-subtle: #8a8a8e;
+  --color-line: rgba(0, 0, 0, 0.08);
+}
+
+@layer base {
+  body {
+    @apply bg-canvas text-ink font-sans antialiased selection:bg-accent selection:text-white;
+  }
+}
+
+.title-large {
+  font-size: clamp(48px, 10vw, 84px);
+  line-height: 0.95;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+
+.check-item {
+  @apply py-4 md:py-6 flex items-center justify-between border-b border-line cursor-pointer transition-all active:scale-[0.98];
+}
+
+.check-card {
+  @apply p-3 flex flex-col items-start gap-2 rounded-xl border border-transparent cursor-pointer transition-all active:scale-[0.95] bg-ink/5;
+}
+
+.check-card.checked {
+  @apply opacity-30 bg-transparent;
+}
+
+.check-checkbox {
+  @apply w-6 h-6 border-2 border-ink rounded-full flex items-center justify-center transition-all duration-300;
+}
+
+.check-checkbox.checked {
+  @apply bg-ink border-ink;
+}
+
+.check-item.checked {
+  @apply opacity-30;
+}
+
+.label-micro {
+  @apply text-[10px] uppercase font-bold tracking-[0.15em] text-subtle;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+@keyframes slide-in {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slide {
+  animation: slide-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
